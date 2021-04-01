@@ -13,3 +13,4 @@
 <script src="{{asset('templates/horizontal/assets')}}/pages/jquery.dashboard.init.js"></script>
 <!-- App js -->
 <script src="{{asset('templates/horizontal/assets')}}/js/app.js"></script>
+@stack('js')

@@ -9,25 +9,35 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta content="A premium admin dashboard template by mannatthemes" name="description">
         <meta content="Mannatthemes" name="author">
-        @include('layouts.__link')
+        @include('layouts.partials.admin.__link')
     </head>
 
     <body>
         <!-- Top Bar Start -->
-        @include('layouts.__topbar')
+        @include('layouts.partials.admin.__topbar')
         <!-- Top Bar End -->
         <!-- Header -->
-        @include('layouts.__header')
+        @include('layouts.partials.admin.__header')
         <!-- Header End -->
         <div class="page-wrapper">
             <!-- Navbar -->
-            @include('layouts.__navbar')
+            @include('layouts.partials.admin.__navbar')
             <!-- Navbar End -->
             <!-- Page Content-->
+            <div class="page-content">
             @yield('content')
+                <!-- container -->
+            <footer class="footer text-center text-sm-left">
+                &copy; 2019 Frogetor
+                <span class="text-muted d-none d-sm-inline-block float-right"
+                >Crafted with <i class="mdi mdi-heart text-danger"></i> by
+                Mannatthemes</span
+                >
+            </footer>
+            </div>
             <!-- Page Content End -->
         </div><!-- end page-wrapper -->
-        @include('layouts.__script')
+        @include('layouts.partials.admin.__script')
     </body>
 
 </html>

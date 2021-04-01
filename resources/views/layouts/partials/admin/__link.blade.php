@@ -5,3 +5,4 @@
 <link href="{{asset('templates/horizontal/assets/css')}}/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="{{asset('templates/horizontal/assets/css')}}/icons.css" rel="stylesheet" type="text/css">
 <link href="{{asset('templates/horizontal/assets/css')}}/style.css" rel="stylesheet" type="text/css">
+@stack('css')

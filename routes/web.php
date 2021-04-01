@@ -19,3 +19,8 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
+
+
+Route::get('/pemesanan', function () {
+    return view('toko.transaksi.pemesanan');
+});
