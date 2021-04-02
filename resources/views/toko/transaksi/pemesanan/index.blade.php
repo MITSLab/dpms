@@ -44,7 +44,7 @@
                     </tr>
                 </x-slot>
                     <tr>
-                        <td>JL0012</td>
+                        <td>01</td>
                         <td>02/04/2021</td>
                         <td>IBNU IBNU</td>
                         <th>MEMBER</th>

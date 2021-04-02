@@ -21,6 +21,7 @@ Route::get('/home', function () {
 });
 
 
-Route::get('/pemesanan', function () {
-    return view('toko.transaksi.pemesanan');
+Route::name('pemesanan.')->namespace('Transaksi')->prefix('pemesanan')->group(function(){
+    Route::get('/', 'PemesananController@index')->name('index');
+    Route::get('/baru', 'PemesananController@create')->name('create');
 });

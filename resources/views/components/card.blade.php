@@ -1,7 +1,7 @@
 <div {{ $attributes->merge(['class' => 'card']) }}>
     <div class="card-body">
         @isset($title)
-        <h4 class="mt-0 header-title">
+        <h4 class="mt-0 header-title d-flex justify-content-between">
             {{ $title }}
         </h4>
         @endisset
