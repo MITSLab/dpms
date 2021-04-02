@@ -13,10 +13,11 @@ class CreateUomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('uoms', function (Blueprint $table) {
+        Schema::create('uom', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('keterangan');
+            $table->string('keterangan')
+                  ->nullable();
             $table->timestamps();
         });
     }

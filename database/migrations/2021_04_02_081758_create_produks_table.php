@@ -13,21 +13,31 @@ class CreateProduksTable extends Migration
      */
     public function up()
     {
-        Schema::create('produks', function (Blueprint $table) {
+        Schema::create('produk', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
             $table->string('nama');
-            $table->integer('stok');
-            $table->integer('stok_min');
-            $table->integer('panjang');
-            $table->integer('lebar');
-            $table->decimal('harga_beli');
-            $table->decimal('harga_jual');
-            $table->string('path_foto');
+            $table->integer('stok')
+                  ->default(0);
+            $table->integer('stok_min')
+                  ->default(0);
+            $table->bigInteger('panjang')
+                  ->default(0)
+                  ->comment('cm');
+            $table->bigInteger('lebar')
+                  ->default(0)
+                  ->comment('cm');
+            $table->float('harga_beli')
+                  ->default(0);
+            $table->float('harga_jual')
+                  ->default(0);
+            $table->string('path_foto')
+                  ->nullable();
             $table->foreignId('supplier_id');
             $table->foreignId('kategori_produk_id');
             $table->foreignId('uom_id');
-            $table->boolean('is_active');
+            $table->boolean('is_active')
+                  ->default(1);
             $table->timestamps();
         });
     }
@@ -39,6 +49,6 @@ class CreateProduksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produks');
+        Schema::dropIfExists('produk');
     }
 }

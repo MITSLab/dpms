@@ -13,10 +13,13 @@ class CreateSubklasifikasisTable extends Migration
      */
     public function up()
     {
-        Schema::create('subklasifikasis', function (Blueprint $table) {
+        Schema::create('subklasifikasi', function (Blueprint $table) {
             $table->id();
-            $table->string('klasifikasi');
-            $table->string('subklasifikasi');
+            $table->string('klasifikasi')
+                  ->comment('ex: harta, asset');
+            $table->string('subklasifikasi')
+                  ->comment('ex: kas, bank')
+                  ->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateSubklasifikasisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subklasifikasis');
+        Schema::dropIfExists('subklasifikasi');
     }
 }

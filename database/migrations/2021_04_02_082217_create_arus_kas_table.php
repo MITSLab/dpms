@@ -16,11 +16,16 @@ class CreateArusKasTable extends Migration
         Schema::create('arus_kas', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
-            $table->date('tanggal');
-            $table->string('keterangan');
-            $table->decimal('masuk');
-            $table->decimal('keluar');
-            $table->decimal('saldo');
+            $table->date('tanggal')
+                  ->default(now());
+            $table->string('keterangan')
+                  ->nullable();
+            $table->float('masuk')
+                  ->default(0);
+            $table->float('keluar')
+                  ->default(0);
+            $table->float('saldo')
+                  ->default(0);
             $table->foreignId('kas_id');
             $table->foreignId('user_id');
             $table->timestamps();

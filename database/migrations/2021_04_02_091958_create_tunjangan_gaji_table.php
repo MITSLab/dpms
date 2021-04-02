@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBonsTable extends Migration
+class CreateTunjanganGajiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateBonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bon', function (Blueprint $table) {
+        Schema::create('tunjangan_gaji', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('gaji_id');
+            $table->foreignId('tunjangan_id');
             $table->string('kode');
             $table->date('tanggal')
                   ->default(now());
-            $table->foreignId('kontak_id');
-            $table->float('total_bayar')
-                  ->default(0);
-            $table->float('sisa')
+            $table->float('nominal')
                   ->default(0);
             $table->timestamps();
         });
@@ -34,6 +33,6 @@ class CreateBonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bon');
+        Schema::dropIfExists('tunjangan_gaji');
     }
 }

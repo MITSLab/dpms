@@ -13,10 +13,11 @@ class CreateTunjangansTable extends Migration
      */
     public function up()
     {
-        Schema::create('tunjangans', function (Blueprint $table) {
+        Schema::create('tunjangan', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('periode');
+            $table->enum('periode', ['menit', 'jam', 'hari', 'minggu', 'bulan', 'tahun'])
+                  ->default('jam');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateTunjangansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tunjangans');
+        Schema::dropIfExists('tunjangan');
     }
 }

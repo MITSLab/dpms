@@ -15,16 +15,34 @@ class AddMultipleColumnToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('name');
-            $table->string('nama')->after('id');
-            $table->string('username')->unique()->after('nama');
-            $table->string('telepon')->after('remember_token');
-            $table->text('alamat')->after('telepon');
-            $table->string('kode_pos')->after('alamat');
-            $table->string('kota')->after('kode_pos');
-            $table->string('path_foto')->after('kota');
-            $table->foreignId('role_id')->after('path_foto');
-            $table->foreignId('kategori_user_id')->after('role_id');
-            $table->boolean('is_active')->after('kategori_user_id');
+            
+            $table->string('nama')
+                  ->after('id');
+            $table->string('username')
+                  ->unique()
+                  ->after('nama');
+            $table->string('telepon')
+                  ->nullable()
+                  ->after('remember_token');
+            $table->text('alamat')
+                  ->nullable()
+                  ->after('telepon');
+            $table->string('kode_pos')
+                  ->nullable()
+                  ->after('alamat');
+            $table->string('kota')
+                  ->nullable()
+                  ->after('kode_pos');
+            $table->string('path_foto')
+                  ->nullable()
+                  ->after('kota');
+            $table->foreignId('role_id')
+                  ->after('path_foto');
+            $table->foreignId('kategori_user_id')
+                  ->after('role_id');
+            $table->boolean('is_active')
+                  ->default(0)
+                  ->after('kategori_user_id');
         });
     }
 

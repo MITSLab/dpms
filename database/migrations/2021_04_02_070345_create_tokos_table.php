@@ -13,20 +13,29 @@ class CreateTokosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tokos', function (Blueprint $table) {
+        Schema::create('toko', function (Blueprint $table) {
             $table->id();
             $table->string('email');
-            $table->string('telepon');
-            $table->string('nomor_wa');
+            $table->string('telepon')
+                  ->nullable();
+            $table->string('nomor_wa')
+                  ->nullable();
             $table->string('nama_pemilik');
             $table->string('nama_toko');
-            $table->text('tentang');
-            $table->text('alamat');
-            $table->string('kode_pos');
-            $table->string('kota');
-            $table->string('path_logo_tab');
-            $table->string('path_logo_login');
-            $table->string('path_logo_admin');
+            $table->text('tentang')
+                  ->nullable();
+            $table->text('alamat')
+                  ->nullable();
+            $table->string('kode_pos')
+                  ->nullable();
+            $table->string('kota')
+                  ->nullable();
+            $table->string('path_logo_tab')
+                  ->nullable();
+            $table->string('path_logo_login')
+                  ->nullable();
+            $table->string('path_logo_admin')
+                  ->nullable();
             $table->timestamps();
         });
     }
@@ -38,6 +47,6 @@ class CreateTokosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tokos');
+        Schema::dropIfExists('toko');
     }
 }

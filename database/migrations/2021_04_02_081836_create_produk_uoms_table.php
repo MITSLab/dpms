@@ -13,11 +13,11 @@ class CreateProdukUomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('produk_uoms', function (Blueprint $table) {
+        Schema::create('produk_uom', function (Blueprint $table) {
             $table->id();
             $table->foreignId('produk_id');
             $table->foreignId('uom_id');
-            $table->string('isi_mm');
+            $table->string('isi_cm');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateProdukUomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produk_uoms');
+        Schema::dropIfExists('produk_uom');
     }
 }

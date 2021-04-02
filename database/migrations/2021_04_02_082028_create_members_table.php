@@ -13,12 +13,14 @@ class CreateMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('member', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
             $table->string('nama');
-            $table->text('alamat');
-            $table->string('telepon');
+            $table->text('alamat')
+                  ->nullable();
+            $table->string('telepon')
+                  ->nullable();
             $table->foreignId('tipe_member_id');
             $table->timestamps();
         });
@@ -31,6 +33,6 @@ class CreateMembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('members');
+        Schema::dropIfExists('member');
     }
 }

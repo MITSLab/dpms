@@ -13,16 +13,24 @@ class CreateKontaksTable extends Migration
      */
     public function up()
     {
-        Schema::create('kontaks', function (Blueprint $table) {
+        Schema::create('kontak', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
             $table->string('nama');
-            $table->string('telepon');
-            $table->string('kurs');
-            $table->string('tipe');
-            $table->string('jenis');
-            $table->string('klasifikasi');
-            $table->string('npwp');
+            $table->string('telepon')
+                  ->nullable();
+            $table->string('kurs')
+                  ->nullable()
+                  ->default('IDR');
+            $table->foreignId('jenis_kontak_id')
+                  ->comment('tipe');
+            $table->string('jenis')
+                  ->comment('lokasi atau wilayah')
+                  ->nullable();
+            $table->string('klasifikasi')
+                  ->nullable();
+            $table->string('npwp')
+                  ->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +42,6 @@ class CreateKontaksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kontaks');
+        Schema::dropIfExists('kontak');
     }
 }

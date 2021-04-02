@@ -13,10 +13,11 @@ class CreateTipeMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipe_members', function (Blueprint $table) {
+        Schema::create('tipe_member', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('keterangan');
+            $table->string('keterangan')
+                  ->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateTipeMembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipe_members');
+        Schema::dropIfExists('tipe_member');
     }
 }

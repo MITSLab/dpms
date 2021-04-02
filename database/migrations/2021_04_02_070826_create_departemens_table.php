@@ -13,14 +13,17 @@ class CreateDepartemensTable extends Migration
      */
     public function up()
     {
-        Schema::create('departemens', function (Blueprint $table) {
+        Schema::create('departemen', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
             $table->string('nama');
             $table->string('manajer');
-            $table->string('bidang');
-            $table->text('alamat');
-            $table->string('keterangan');
+            $table->string('bidang')
+                  ->nullable();
+            $table->text('alamat')
+                  ->nullable();
+            $table->string('keterangan')
+                  ->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ class CreateDepartemensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departemens');
+        Schema::dropIfExists('departemen');
     }
 }

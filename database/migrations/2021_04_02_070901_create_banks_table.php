@@ -13,7 +13,7 @@ class CreateBanksTable extends Migration
      */
     public function up()
     {
-        Schema::create('banks', function (Blueprint $table) {
+        Schema::create('bank', function (Blueprint $table) {
             $table->id();
             $table->string('nama_bank');
             $table->string('nomor_rekening');
@@ -29,6 +29,6 @@ class CreateBanksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banks');
+        Schema::dropIfExists('bank');
     }
 }

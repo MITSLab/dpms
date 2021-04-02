@@ -13,17 +13,18 @@ class CreateGajisTable extends Migration
      */
     public function up()
     {
-        Schema::create('gajis', function (Blueprint $table) {
+        Schema::create('gaji', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
-            $table->date('tanggal');
+            $table->date('tanggal')
+                  ->default(now());
             $table->foreignId('kontak_id');
-            $table->decimal('gaji_pokok');
-            $table->decimal('umt');
-            $table->decimal('bpjs');
-            $table->foreignId('tunjangan_id');
-            $table->foreignId('denda_id');
-            $table->foreignId('bon_id');
+            $table->float('gaji_pokok')
+                  ->default(0);
+            $table->float('umt')
+                  ->default(0);
+            $table->float('bpjs')
+                  ->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +36,6 @@ class CreateGajisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gajis');
+        Schema::dropIfExists('gaji');
     }
 }

@@ -13,13 +13,17 @@ class CreateGudangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gudangs', function (Blueprint $table) {
+        Schema::create('gudang', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('isi');
-            $table->boolean('is_active');
-            $table->boolean('is_utama');
-            $table->string('keterangan');
+            $table->string('isi')
+                  ->comment('terkait ketersedian toko');
+            $table->boolean('is_active')
+                  ->default(1);
+            $table->boolean('is_utama')
+                  ->default(0);
+            $table->string('keterangan')
+                  ->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +35,6 @@ class CreateGudangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gudangs');
+        Schema::dropIfExists('gudang');
     }
 }

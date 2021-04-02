@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKotakDetailsTable extends Migration
+class CreateBonGajiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateKotakDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('kotak_detail', function (Blueprint $table) {
+        Schema::create('bon_gaji', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kontak_id');
-            $table->text('alamat')
-                  ->nullable();
-            $table->string('kode_pos')
-                  ->nullable();
-            $table->string('kota')
-                  ->nullable();
+            $table->foreignId('gaji_id');
+            $table->foreignId('bon_id');
+            $table->string('kode');
+            $table->date('tanggal')
+                  ->default(now());
+            $table->float('nominal')
+                  ->default(0);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateKotakDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kotak_detail');
+        Schema::dropIfExists('bon_gaji');
     }
 }
