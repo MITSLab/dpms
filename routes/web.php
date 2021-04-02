@@ -25,3 +25,6 @@ Route::name('pemesanan.')->namespace('Transaksi')->prefix('pemesanan')->group(fu
     Route::get('/', 'PemesananController@index')->name('index');
     Route::get('/baru', 'PemesananController@create')->name('create');
 });
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
