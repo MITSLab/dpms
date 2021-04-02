@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <title>
@@ -16,28 +15,28 @@
         <!-- Top Bar Start -->
         @include('layouts.partials.admin.__topbar')
         <!-- Top Bar End -->
+
         <!-- Header -->
         @include('layouts.partials.admin.__header')
         <!-- Header End -->
+
         <div class="page-wrapper">
             <!-- Navbar -->
             @include('layouts.partials.admin.__navbar')
             <!-- Navbar End -->
+
             <!-- Page Content-->
             <div class="page-content">
-            @yield('content')
-                <!-- container -->
-            <footer class="footer text-center text-sm-left">
-                &copy; 2019 Frogetor
-                <span class="text-muted d-none d-sm-inline-block float-right"
-                >Crafted with <i class="mdi mdi-heart text-danger"></i> by
-                Mannatthemes</span
-                >
-            </footer>
+                @yield('content')
             </div>
             <!-- Page Content End -->
-        </div><!-- end page-wrapper -->
+        </div>
+        <!-- end page-wrapper -->
+
+        <!-- Footer -->
+        @include('layouts.partials.admin.__footer')
+        <!-- Footer End -->
+
         @include('layouts.partials.admin.__script')
     </body>
-
 </html>
