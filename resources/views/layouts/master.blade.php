@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta content="A premium admin dashboard template by mannatthemes" name="description">
         <meta content="Mannatthemes" name="author">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         @include('layouts.partials.admin.__link')
     </head>
 
