@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Transaksi;
+namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PemesananController extends Controller
+class ProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        return view('transaksi.pemesanan.index');
+        return view('master.produk.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class PemesananController extends Controller
      */
     public function create()
     {
-        return view('transaksi.pemesanan.create');
+        return view('master.produk.create');
     }
 
     /**

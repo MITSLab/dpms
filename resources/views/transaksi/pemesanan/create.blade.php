@@ -41,7 +41,7 @@
                             <input class="form-control" type="text" id="hp_pemesan">
                         </div>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text" id="member_pemesan" value="UMUM" disabled>
+                            <input class="form-control" type="text" id="member_pemesan" value="UMUM" readonly>
                         </div>
                     </div>
                 </x-card>
@@ -113,24 +113,54 @@
         </div>
 
         <x-card>
-            <div class="table-responsive">
+            <div class="d-flex">
+                <div class="form-group row mx-2">
+                    <label for="no_pemesanan" class="col-sm-5 col-form-label text-left">No Pemesanan</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="no_pemesanan" readonly>
+                    </div>
+                </div>
+                <div class="form-group row mx-2">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Cari Item">
+                            <span class="input-group-prepend">
+                                <button type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive table-bordered">
                 <table class="table mb-0 table-centered">
                     <thead>
                         <tr>
-                            <th>Compny</th>
-                            <th>Bill</th>
-                            <th>Average Bill</th>
-                            <th>Paid Bill</th>
-                            <th>Action</th>
+                            <th class="text-center">Kode</th>
+                            <th class="text-center">Nama Item</th>
+                            <th class="text-center">P</th>
+                            <th class="text-center">L</th>
+                            <th class="text-center">Qty</th>
+                            <th class="text-center">Satuan</th>
+                            <th>Subtotal</th>
+                            <th>Finishing</th>
+                            <th>Nama File</th>
+                            <th>Ket</th>
+                            <td class="text-center">Aksi</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><img src="assets/images/widgets/project1.jpg" alt="" class="rounded-circle thumb-sm mr-1"> Micromin</td>
-                            <td>4</td>
-                            <td>$250</td>
-                            <td>$800</td>
-                            <td>
+                            <td class="text-center">JL01087</td>
+                            <td>Test Produk 123</td>
+                            <td class="text-center">4</td>
+                            <td class="text-center">5</td>
+                            <td class="text-center">10</td>
+                            <td class="text-center">PCS</td>
+                            <td>5,000,00</td>
+                            <td>MA</td>
+                            <td>Test Produk 123</td>
+                            <td>-</td>
+                            <td class="text-center">
                                 <i class="fas fa-trash"></i>
                             </td>
                         </tr>
