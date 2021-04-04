@@ -30,10 +30,15 @@ Route::name('pemesanan.')->namespace('Transaksi')->prefix('pemesanan')->group(fu
 Route::namespace('Master')->group(function(){
 
     Route::name('produk.')->prefix('produk')->group(function(){
-        Route::get('/', 'ProdukController@index')->name('index');
-        Route::get('/baru', 'ProdukController@create')->name('create');
+        Route::resource('/', 'ProdukController');
+        Route::post('/delete-selected', 'ProdukController@deleteSelected')->name('delete_selected');
 
         Route::resource('/kategori', 'KategoriProdukController');
+        Route::post('/kategori/delete-selected', 'KategoriProdukController@deleteSelected')->name('kategori.delete_selected');
+
+        Route::resource('/uom', 'UomProdukController');
+        Route::post('/uom/delete-selected', 'UomProdukController@deleteSelected')->name('uom.delete_selected');
+
     });
 
 
@@ -42,3 +47,8 @@ Route::namespace('Master')->group(function(){
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/route', function() {
+    Artisan::call('route:cache');
+    return "Cache is cleared";
+});

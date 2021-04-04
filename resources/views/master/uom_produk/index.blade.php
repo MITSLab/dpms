@@ -1,8 +1,8 @@
 @extends('layouts/master')
-@section('title', 'Kategori Produk')
+@section('title', 'UOM / Satuan Produk')
 
 @section('header_title')
-    <i class="mdi mdi-monitor mr-2"></i>Kategori Produk
+    <i class="mdi mdi-monitor mr-2"></i>UOM / Satuan Produk
 @endsection
 
 @section('content')
@@ -11,16 +11,16 @@
     <div class="col-12">
         <x-card>
             <div class="button-items">
-                <button onclick="addForm('{{ route('produk.kategori.store') }}')" type="button" class="btn btn-soft-primary waves-effect waves-light"><i class="fas fa-plus"></i> Baru</button>
-                <button onclick="deleteSelected('{{ route('produk.kategori.delete_selected') }}')" type="button" class="btn btn-soft-danger waves-effect waves-light"><i class="fas fa-trash"></i> Hapus</button>
+                <button onclick="addForm('{{ route('produk.uom.store') }}')" type="button" class="btn btn-soft-primary waves-effect waves-light"><i class="fas fa-plus"></i> Baru</button>
+                <button onclick="deleteSelected('{{ route('produk.uom.delete_selected') }}')" type="button" class="btn btn-soft-danger waves-effect waves-light"><i class="fas fa-trash"></i> Hapus</button>
             </div>
         </x-card>
 
         <x-card>
             <x-slot name="title">
-                Kategori Produk
+                UOM / Satuan Produk
             </x-slot>
-            <form action="" method="post" class="form-kategori">
+            <form action="" method="post" class="form-uom">
                 @csrf
                 <table class="table dt-responsive nowrap">
                     <thead>
@@ -28,7 +28,7 @@
                             <input type="checkbox" name="select_all" id="select_all">
                         </th>
                         <th width="5%">No</th>
-                        <th>Kategori</th>
+                        <th>Nama</th>
                         <th>Keterangan</th>
                         <th width="10%" class="text-center"><i class="fa fa-cog"></i></th>
                     </thead>
@@ -39,7 +39,13 @@
     </div>
 </div>
 
-@includeIf('master.kategori_produk.form')
+    @if (session('success'))
+    <script>
+        toastr.success('<?php echo session('success'); ?>')
+    </script>
+    @endif
+
+@includeIf('master.uom_produk.form')
 @endsection
 
 @push('css')
@@ -64,6 +70,9 @@
     <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/responsive.bootstrap4.min.js"></script>
     <script src="{{asset('templates/horizontal/assets')}}/pages/jquery.datatable.init.js"></script>
 
+    <!-- App js -->
+    <script src="{{asset('templates/horizontal/assets')}}/js/jquery.core.js"></script>
+    <script src="{{asset('templates/horizontal/assets')}}/js/app.js"></script>
     <script src="{{ asset('js/validator.min.js') }}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
     
@@ -79,7 +88,6 @@
 
         }
     </script>
-    
 
     <script>
         let table;
@@ -89,7 +97,7 @@
                 processing: true,
                 autoWidth: false,
                 ajax: {
-                    url: '{{ route('produk.kategori.create') }}',
+                    url: '{{ route('produk.uom.create') }}',
                 },
                 columns: [
                     {data: 'select_all', searchable: false, sortable: false},
@@ -106,7 +114,7 @@
                         .done((response) => {
                             $('#modal-form').modal('hide');
                             table.ajax.reload();
-                            toastr.success('Kategori produk berhasil disimpan');
+                            toastr.success('Uom produk berhasil disimpan');
                         })
                         .fail((errors) => {
                             toastr.error('Tidak dapat menyimpan data');
@@ -115,14 +123,14 @@
                 }
             });
 
-                $('[name=select_all]').on('click', function () {
+            $('[name=select_all]').on('click', function () {
                 $(':checkbox').prop('checked', this.checked);
             });
         });
     
         function addForm(url) {
             $('#modal-form').modal('show');
-            $('#modal-form .modal-title').text('Tambah Kategori');
+            $('#modal-form .modal-title').text('Tambah UOM / Satuan');
     
             $('#modal-form form')[0].reset();
             $('#modal-form form').attr('action', url);
@@ -133,7 +141,7 @@
     
         function editForm(url) {
             $('#modal-form').modal('show');
-            $('#modal-form .modal-title').text('Edit Kategori');
+            $('#modal-form .modal-title').text('Edit UOM / Satuan');
     
             $('#modal-form form')[0].reset();
             $('#modal-form form').attr('action', url);
@@ -160,7 +168,7 @@
                     })
                     .done((response) => {
                         table.ajax.reload();
-                        toastr.success('Kategori produk berhasil dihapus');
+                        toastr.success('Uom produk berhasil dihapus');
                     })
                     .fail((errors) => {
                         toastr.success('Tidak dapat menghapus data');
@@ -169,13 +177,14 @@
             }
         }
 
+        
         function deleteSelected(url) {
         if ($('input:checked').length > 1) {
                 if (confirm('Yakin ingin menghapus data terpilih?')) {
-                    $.post(url, $('.form-kategori').serialize())
+                    $.post(url, $('.form-uom').serialize())
                         .done((response) => {
                             table.ajax.reload();
-                            toastr.success('Kategori produk terpilih berhasil dihapus');
+                            toastr.success('Uom / Satuan produk terpilih berhasil dihapus');
                         })
                         .fail((errors) => {
                             alert('Tidak dapat menghapus data');

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Uom extends Model
 {
     use HasFactory;
+
+    protected $table = 'uom';
+    protected $guarded = [];
+
+    public function produks()
+    {
+        return $this->HasMany('App\Models\Produk');
+    }
 }

@@ -1,11 +1,7 @@
 @extends('layouts/master')
-@section('title', 'DPMS | Home')
+@section('title', 'Pesanan')
 @section('header_title')
     <i class="mdi mdi-monitor mr-2"></i>Pesanan
-@endsection
-
-@section('title')
-    Pesanan
 @endsection
 
 @section('content')

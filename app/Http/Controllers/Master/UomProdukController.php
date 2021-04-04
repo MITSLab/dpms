@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\KategoriProduk;
+use App\Models\Uom;
 use DataTables;
 
-class KategoriProdukController extends Controller
+class UomProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class KategoriProdukController extends Controller
      */
     public function index()
     {
-        return view('master.kategori_produk.index');
+        return view('master.uom_produk.index');
     }
 
     /**
@@ -26,19 +26,19 @@ class KategoriProdukController extends Controller
      */
     public function create()
     {
-        $kategori = KategoriProduk::all();
-        return Datatables::of($kategori)
+        $uom = Uom::all();
+        return Datatables::of($uom)
             ->addIndexColumn()
-            ->addColumn('select_all', function ($kategori) {
+            ->addColumn('select_all', function ($uom) {
                 return '
-                    <input type="checkbox" name="id[]" value="'. $kategori->id .'">
+                    <input type="checkbox" name="id[]" value="'. $uom->id .'">
                 ';
             })
-            ->addColumn('aksi', function ($kategori) {
+            ->addColumn('aksi', function ($uom) {
                 return '
                 <div class="btn-group">
-                    <button onclick="editForm(`'. route('produk.kategori.update', $kategori->id) .'`)" class="btn btn-soft-warning waves-effect waves-light mr-2"><i class="fa fa-edit"></i></button>
-                    <button onclick="deleteData(`'. route('produk.kategori.destroy', $kategori->id) .'`)" class="btn btn-soft-danger waves-effect waves-light"><i class="fa fa-trash"></i></button>
+                    <button onclick="editForm(`'. route('produk.uom.update', $uom->id) .'`)" class="btn btn-soft-warning waves-effect waves-light mr-2"><i class="fa fa-edit"></i></button>
+                    <button onclick="deleteData(`'. route('produk.uom.destroy', $uom->id) .'`)" class="btn btn-soft-danger waves-effect waves-light"><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })
@@ -54,10 +54,10 @@ class KategoriProdukController extends Controller
      */
     public function store(Request $request)
     {
-        $kategori = new KategoriProduk();
-        $kategori->nama = $request->nama;
-        $kategori->keterangan = $request->keterangan;
-        $kategori->save();
+        $uom = new Uom();
+        $uom->nama = $request->nama;
+        $uom->keterangan = $request->keterangan;
+        $uom->save();
 
         return response()->json('Kategori produk berhasil dibuat', 200);
     }
@@ -70,9 +70,9 @@ class KategoriProdukController extends Controller
      */
     public function show($id)
     {
-        $kategori = KategoriProduk::find($id);
+        $uom = Uom::find($id);
 
-        return response()->json($kategori);
+        return response()->json($uom);
     }
 
     /**
@@ -95,10 +95,10 @@ class KategoriProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $kategori = KategoriProduk::find($id);
-        $kategori->nama = $request->nama;
-        $kategori->keterangan = $request->keterangan;
-        $kategori->update();
+        $uom = Uom::find($id);
+        $uom->nama = $request->nama;
+        $uom->keterangan = $request->keterangan;
+        $uom->update();
 
         return response()->json('Data berhasil disimpan', 200);
     }
@@ -111,8 +111,8 @@ class KategoriProdukController extends Controller
      */
     public function destroy($id)
     {
-        $kategori = KategoriProduk::find($id);
-        $kategori->delete();
+        $uom = Uom::find($id);
+        $uom->delete();
 
         return response(null, 204);
     }
@@ -120,8 +120,8 @@ class KategoriProdukController extends Controller
     public function deleteSelected(Request $request)
     {
         foreach ($request->id as $id) {
-            $kategori = KategoriProduk::find($id);
-            $kategori->delete();
+            $uom = Uom::find($id);
+            $uom->delete();
         }
 
         return response(null, 204);

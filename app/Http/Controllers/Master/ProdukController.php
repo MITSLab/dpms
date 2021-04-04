@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Produk;
+use App\Models\Uom;
+use App\Models\KategoriProduk;
+use DataTables;
 
 class ProdukController extends Controller
 {
@@ -14,7 +18,9 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        return view('master.produk.index');
+        $kategori = KategoriProduk::all()->pluck('nama', 'id');
+        $uom = Uom::all()->pluck('nama', 'id');
+        return view('master.produk.index', compact('kategori', 'uom'));
     }
 
     /**
@@ -24,7 +30,39 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('master.produk.create');
+        $produk = Produk::with('kategori_produk', 'uoms')
+        ->orderBy('kode', 'asc')
+        ->get();
+
+        return Datatables::of($produk)
+            ->addIndexColumn()
+            ->addColumn('select_all', function ($produk) {
+                return '
+                    <input type="checkbox" name="id[]" value="'. $produk->id .'">
+                ';
+            })
+            ->addColumn('kode_produk', function ($produk) {
+                return '<span class="label label-success">'. $produk->kode_produk .'</span>';
+            })
+            ->addColumn('harga_beli', function ($produk) {
+                return format_uang($produk->harga_beli);
+            })
+            ->addColumn('harga_jual', function ($produk) {
+                return format_uang($produk->harga_jual);
+            })
+            ->addColumn('stok', function ($produk) {
+                return format_uang($produk->stok);
+            })
+            ->addColumn('aksi', function ($produk) {
+                return '
+                <div class="btn-group">
+                    <button onclick="editForm(`'. route('produk.update', $produk->id) .'`)" class="btn btn-soft-warning waves-effect waves-light mr-2"><i class="fa fa-edit"></i></button>
+                    <button onclick="deleteData(`'. route('produk.destroy', $produk->id) .'`)" class="btn btn-soft-danger waves-effect waves-light"><i class="fa fa-trash"></i></button>
+                </div>
+                ';
+            })
+            ->rawColumns(['select_all','aksi'])
+            ->make(true);
     }
 
     /**
@@ -35,7 +73,25 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produk = new Produk();
+        $produk->kode = $request->kode;
+        $produk->nama = $request->nama;
+        $produk->kategori_produk_id = $request->kategori_produk_id;
+        $produk->uom_id = 1;
+        $produk->stok = $request->stok;
+        $produk->stok_min = $request->stok_min;
+        $produk->panjang = $request->panjang;
+        $produk->lebar = $request->lebar;
+        $produk->harga_beli = $request->harga_beli;
+        $produk->harga_jual = $request->harga_jual;
+        $produk->supplier_id = 1;
+        $produk->is_active = $request->is_active;
+        $produk->path_foto = $request->path_foto;
+        $produk->save();
+
+        $produk->uoms()->attach($request->uom[]);
+
+        return response()->json('Produk berhasil dibuat', 200);
     }
 
     /**
@@ -46,7 +102,9 @@ class ProdukController extends Controller
      */
     public function show($id)
     {
-        //
+        $produk = Produk::find($id);
+
+        return response()->json($produk);
     }
 
     /**
@@ -69,7 +127,12 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kategori = Produk::find($id);
+        $kategori->nama = $request->nama;
+        $kategori->keterangan = $request->keterangan;
+        $kategori->update();
+
+        return response()->json('Data berhasil disimpan', 200);
     }
 
     /**
@@ -80,6 +143,9 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produk = Produk::find($id);
+        $produk->delete();
+
+        return response(null, 204);
     }
 }
