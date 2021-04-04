@@ -29,6 +29,6 @@ class CreateUomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('uoms');
+        Schema::dropIfExists('uom');
     }
 }

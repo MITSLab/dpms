@@ -149,8 +149,8 @@
                                     <!--end row-->
                                 </div>
                                 <!--end carousel-item-->
-                            </div><a class="carousel-control-prev" href="index.html#carouselExampleControls" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-                                    class="sr-only">Previous</span> </a><a class="carousel-control-next" href="index.html#carouselExampleControls" role="button" data-slide="next"><span class="carousel-control-next-icon"
+                            </div><a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+                                    class="sr-only">Previous</span> </a><a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"><span class="carousel-control-next-icon"
                                     aria-hidden="true"></span> <span class="sr-only">Next</span></a>
                         </div>
                     </div>
@@ -346,8 +346,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><a class="carousel-control-prev" href="index.html#carousel_best_saler" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span>
-                            </a><a class="carousel-control-next" href="index.html#carousel_best_saler" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span></a>
+                            </div><a class="carousel-control-prev" href="#carousel_best_saler" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+                            </a><a class="carousel-control-next" href="#carousel_best_saler" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span></a>
                         </div>
                     </div>
                     <!--end card-body-->
@@ -428,8 +428,8 @@
                                             passages of Lorem Ipsum available.</p>
                                     </div>
                                 </div>
-                            </div><a class="carousel-control-prev" href="index.html#carousel_review" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span>
-                            </a><a class="carousel-control-next" href="index.html#carousel_review" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span></a>
+                            </div><a class="carousel-control-prev" href="#carousel_review" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+                            </a><a class="carousel-control-next" href="#carousel_review" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span></a>
                         </div>
                     </div>
                     <!--end card-body-->

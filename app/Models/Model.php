@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\Model;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Gudang extends Model
+class Model extends Eloquent
 {
     use HasFactory;
 }
