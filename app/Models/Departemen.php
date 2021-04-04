@@ -8,4 +8,6 @@ use App\Models\Model;
 class Departemen extends Model
 {
     use HasFactory;
+
+    protected $table = "departemen";
 }

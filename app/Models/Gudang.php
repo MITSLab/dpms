@@ -8,4 +8,6 @@ use App\Models\Model;
 class Gudang extends Model
 {
     use HasFactory;
+
+    protected $table = "gudang";
 }

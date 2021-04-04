@@ -1,5 +1,12 @@
-<div class="modal fade bs-example-modal-lg" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<div {{ $attributes->merge([
+    "class" => "modal fade",
+    "id" => "modal-form",
+    "tabindex" => "-1",
+    "role" => "dialog",
+    "aria-labelledby" => "exampleModalLabel",
+    "aria-hidden" => "true"
+]) }} >
+<div class="modal-dialog {{ $modalDialogClass ?? 'modal-lg' }} " role="document">
     <div class="modal-content">
         <form action="" method="post" class="form-horizontal">
             @csrf

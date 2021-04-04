@@ -8,4 +8,6 @@ use App\Models\Model;
 class KategoriUser extends Model
 {
     use HasFactory;
+
+    protected $table = "kategori_user";
 }

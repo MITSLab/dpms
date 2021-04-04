@@ -8,4 +8,6 @@ use App\Models\Model;
 class Role extends Model
 {
     use HasFactory;
+
+    protected $table = "roles";
 }

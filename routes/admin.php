@@ -35,3 +35,11 @@ Route::namespace('Master')->group(function(){
     });
 
 });
+
+Route::name('admin.')->prefix('admin')->group(function(){
+    Route::resource('/users', 'UserController');
+    Route::post('/users/delete-selected', 'UserController@deleteSelected')->name('users.delete_selected');
+
+    Route::resource('/role', 'RoleController');
+    Route::resource('/kategori-user', 'KategoriUserController');
+});

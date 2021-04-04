@@ -8,4 +8,6 @@ use App\Models\Model;
 class Bank extends Model
 {
     use HasFactory;
+
+    protected $table = "bank";
 }

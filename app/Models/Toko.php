@@ -8,4 +8,6 @@ use App\Models\Model;
 class Toko extends Model
 {
     use HasFactory;
+
+    protected $table = "toko";
 }

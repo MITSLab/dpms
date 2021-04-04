@@ -19,17 +19,6 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
-    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -62,6 +51,11 @@ class User extends Authenticatable
     public function role()
     {
         return $this->hasOne(Role::class, 'id', 'role_id');
+    }
+
+    public function kategoriuser()
+    {
+        return $this->hasOne(KategoriUser::class, 'id', 'kategori_user_id');
     }
 
     public function isAdmin()

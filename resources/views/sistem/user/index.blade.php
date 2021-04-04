@@ -1,8 +1,8 @@
 @extends('layouts/master')
-@section('title', 'Produk')
+@section('title', 'User Management')
 
 @section('header_title')
-    <i class="mdi mdi-monitor mr-2"></i>Produk
+    <i class="mdi mdi-monitor mr-2"></i>User Management
 @endsection
 
 @section('content')
@@ -11,14 +11,14 @@
     <div class="col-12">
         <x-card>
             <div class="button-items">
-                <button onclick="addForm('{{ route('produk.store') }}')" type="button" class="btn btn-soft-primary waves-effect waves-light"><i class="fas fa-plus"></i> Baru</button>
-                <button onclick="deleteSelected('{{ route('produk.delete_selected') }}')" type="button" class="btn btn-soft-danger waves-effect waves-light"><i class="fas fa-trash"></i> Hapus</button>
+                <button onclick="addForm('{{ route('admin.users.store') }}')" type="button" class="btn btn-soft-primary waves-effect waves-light"><i class="fas fa-plus"></i> Baru</button>
+                <button onclick="deleteSelected('{{ route('admin.users.delete_selected') }}')" type="button" class="btn btn-soft-danger waves-effect waves-light"><i class="fas fa-trash"></i> Hapus</button>
             </div>
         </x-card>
 
         <x-card>
             <x-slot name="title">
-                Produk
+                User Management
             </x-slot>
             <form action="" method="post" class="form-uom">
                 @csrf
@@ -29,18 +29,11 @@
                         </th>
                         <th width="5%">No</th>
                         <th>Nama</th>
-                        <th>Kategori</th>
-                        <th>Satuan</th>
-                        <th>Stok</th>
-                        <th>Stok Min</th>
-                        <th>P</th>
-                        <th>L</th>
-                        <th>Harga Beli</th>
-                        <th>Harga Jual</th>
-                        <th>Supplier</th>
-                        <th>Status</th>
-                        <th>Foto</th>
-                        <th>Keterangan</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Telepon</th>
+                        <th>Kategori User</th>
+                        <th>Role</th>
                         <th width="10%" class="text-center"><i class="fa fa-cog"></i></th>
                     </thead>
                 </table>
@@ -50,13 +43,7 @@
     </div>
 </div>
 
-    @if (session('success'))
-    <script>
-        toastr.success('<?php echo session('success'); ?>')
-    </script>
-    @endif
-
-@includeIf('master.produk.form')
+@includeIf('sistem.user.form')
 @endsection
 
 @push('js')
@@ -68,24 +55,17 @@
                 processing: true,
                 autoWidth: false,
                 ajax: {
-                    url: '{{ route('produk.create') }}',
+                    url: '{{ route('admin.users.create') }}',
                 },
                 columns: [
                     {data: 'select_all', searchable: false, sortable: false},
                     {data: 'DT_RowIndex', searchable: false, sortable: false},
                     {data: 'nama'},
-                    {data: 'kategori'},
-                    {data: 'uom'},
-                    {data: 'stok'},
-                    {data: 'stok_min'},
-                    {data: 'panjang'},
-                    {data: 'lebar'},
-                    {data: 'harga_beli'},
-                    {data: 'harga_jual'},
-                    {data: 'supplier'},
-                    {data: 'is_active'},
-                    {data: 'foto'},
-                    {data: 'keterangan'},
+                    {data: 'username'},
+                    {data: 'email'},
+                    {data: 'telepon'},
+                    {data: 'kategoriuser.nama'},
+                    {data: 'role.nama'},
                     {data: 'aksi', searchable: false, sortable: false},
                 ]
             });
@@ -112,7 +92,7 @@
     
         function addForm(url) {
             $('#modal-form').modal('show');
-            $('#modal-form .modal-title').text('Tambah Produk');
+            $('#modal-form .modal-title').text('Tambah User');
     
             $('#modal-form form')[0].reset();
             $('#modal-form form').attr('action', url);
@@ -123,18 +103,27 @@
     
         function editForm(url) {
             $('#modal-form').modal('show');
-            $('#modal-form .modal-title').text('Edit Produk');
+            $('#modal-form .modal-title').text('Edit User');
     
             $('#modal-form form')[0].reset();
             $('#modal-form form').attr('action', url);
             $('#modal-form [name=_method]').val('put');
             $('#modal-form [name=nama]').focus();
-            $('#modal-form [name=keterangan]').focus();
+            $('#modal-form [name=email]').focus();
     
             $.get(url)
                 .done((response) => {
                     $('#modal-form [name=nama]').val(response.nama);
-                    $('#modal-form [name=keterangan]').val(response.keterangan);
+                    $('#modal-form [name=username]').val(response.username);
+                    $('#modal-form [name=foto]').val(response.foto);
+                    $('#modal-form [name=telepon]').val(response.telepon);
+                    $('#modal-form [name=kota]').val(response.kota);
+                    $('#modal-form [name=kode_pos]').val(response.kode_pos);
+                    $('#modal-form [name=alamat]').val(response.alamat);
+                    $('#modal-form [name=is_active]').prop("checked", response.is_active);
+                    $('#modal-form [name=email]').val(response.email);
+                    $('#modal-form [name=role_id]').val(response.role_id);
+                    $('#modal-form [name=kategori_user_id]').val(response.kategori_user_id);
                 })
                 .fail((errors) => {
                     toastr.error('Tidak dapat menampilkan data');
