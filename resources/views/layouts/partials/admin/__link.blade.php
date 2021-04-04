@@ -5,4 +5,6 @@
 <link href="{{asset('templates/horizontal/assets/css')}}/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="{{asset('templates/horizontal/assets/css')}}/icons.css" rel="stylesheet" type="text/css">
 <link href="{{asset('templates/horizontal/assets/css')}}/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+<link href="{{asset('templates/horizontal/assets')}}/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
 @stack('css')

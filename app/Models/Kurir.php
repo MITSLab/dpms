@@ -8,4 +8,6 @@ use App\Models\Model;
 class Kurir extends Model
 {
     use HasFactory;
+
+    protected $table = "kurir";
 }

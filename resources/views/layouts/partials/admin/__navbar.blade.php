@@ -22,11 +22,11 @@
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fas fa-layer-group"></i> Master</a>
                         <ul class="submenu">
-                            <li><a href="#">Master Item</a></li>
-                            <li><a href="#">Kategori</a></li>
-                            <li><a href="#">Satuan</a></li>
-                            <li><a href="#">Pelanggan</a></li>
-                            <li><a href="#">Supplier</a></li>
+                            <li><a href="{{ route('produk.index') }}">Master Item</a></li>
+                            <li><a href="{{ route('produk.kategori.index') }}">Kategori</a></li>
+                            <li><a href="{{ route('produk.uom.index') }}">Satuan</a></li>
+                            <li><a href="{{ route('kontak.member.index') }}">Pelanggan</a></li>
+                            <li><a href="{{ route('kontak.supplier.index') }}">Supplier</a></li>
                             <li><a href="#">Kas</a></li>
                         </ul>
                     </li>

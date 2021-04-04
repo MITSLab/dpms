@@ -8,4 +8,6 @@ use App\Models\Model;
 class Kontak extends Model
 {
     use HasFactory;
+
+    protected $table = "kontak";
 }
