@@ -40,7 +40,6 @@
                         <th>Supplier</th>
                         <th>Status</th>
                         <th>Foto</th>
-                        <th>Keterangan</th>
                         <th width="10%" class="text-center"><i class="fa fa-cog"></i></th>
                     </thead>
                 </table>
@@ -49,12 +48,6 @@
     </div>
     </div>
 </div>
-
-    @if (session('success'))
-    <script>
-        toastr.success('<?php echo session('success'); ?>')
-    </script>
-    @endif
 
 @includeIf('master.produk.form')
 @endsection
@@ -74,18 +67,17 @@
                     {data: 'select_all', searchable: false, sortable: false},
                     {data: 'DT_RowIndex', searchable: false, sortable: false},
                     {data: 'nama'},
-                    {data: 'kategori'},
-                    {data: 'uom'},
+                    {data: 'kategoriproduk.nama'},
+                    {data: 'uom.nama'},
                     {data: 'stok'},
                     {data: 'stok_min'},
                     {data: 'panjang'},
                     {data: 'lebar'},
                     {data: 'harga_beli'},
                     {data: 'harga_jual'},
-                    {data: 'supplier'},
+                    {data: 'supplier.nama'},
                     {data: 'is_active'},
-                    {data: 'foto'},
-                    {data: 'keterangan'},
+                    {data: 'path_foto'},
                     {data: 'aksi', searchable: false, sortable: false},
                 ]
             });
@@ -153,7 +145,7 @@
                         toastr.success('Data berhasil dihapus');
                     })
                     .fail((errors) => {
-                        toastr.success('Tidak dapat menghapus data');
+                        toastr.error('Tidak dapat menghapus data');
                         return;
                     });
             }

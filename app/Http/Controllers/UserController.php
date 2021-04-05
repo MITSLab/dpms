@@ -59,6 +59,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'password' => 'required|string|confirmed|min:8',
+        ]);
+
         $user = new User();
         $user->username = $request->username;
         $user->email = $request->email;
@@ -111,10 +116,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
+
+        if($request->password)  {
+            $request->validate([
+                'password' => 'required|string|confirmed|min:8',
+            ]);
+            $user->password = bcrypt('$request->password');
+        }
+        
         $user->username = $request->username;
         $user->email = $request->email;
         $user->nama = $request->nama;
-        $user->password = bcrypt('$request->password');
         $user->telepon = $request->telepon;
         $user->alamat = $request->alamat;
         $user->kode_pos = $request->kode_pos;

@@ -10,15 +10,19 @@ class Produk extends Model
     use HasFactory;
 
     protected $table = 'produk';
-    protected $guarded = [];
 
-    public function uoms()
+    public function uom()
     {
-        return $this->belongsToMany('App\Models\Uom');
+        return $this->hasOne(Uom::class, 'id', 'uom_id');
     }
 
-    public function kategori_produk()
+    public function supplier()
     {
-        return $this->belongsTo('App\Models\KategoriProduk');
+        return $this->hasOne(Supplier::class, 'id', 'supplier_id');
+    }
+
+    public function kategoriproduk()
+    {
+        return $this->hasOne(KategoriProduk::class, 'id', 'kategori_produk_id');
     }
 }

@@ -39,14 +39,14 @@
             <div class="form-group row">
                 <label for="password" class="col-md-5 col-md-offset-1 control-label">Password</label>
                 <div class="col-md-7">
-                    <input type="password" name="password" id="password" class="form-control" required autofocus>
+                    <input type="password" name="password" id="password" class="form-control" autofocus>
                     <span class="help-block with-errors"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="password" class="col-md-5 col-md-offset-1 control-label">Konfirmasi Password</label>
                 <div class="col-md-7">
-                    <input type="password" name="password_confirmation" id="password" class="form-control" required autofocus>
+                    <input type="password" name="password_confirmation" id="password" class="form-control" autofocus>
                     <span class="help-block with-errors"></span>
                 </div>
             </div>
