@@ -31,8 +31,8 @@ class KontakController extends Controller
             ->addColumn('aksi', function ($kontak) {
                 return '
                 <div class="btn-group">
-                    <button onclick="editForm(`'. route('kontak.update', $kontak->id) .'`)" class="btn btn-soft-warning waves-effect waves-light mr-2"><i class="fa fa-edit"></i></button>
-                    <button onclick="deleteData(`'. route('kontak.destroy', $kontak->id) .'`)" class="btn btn-soft-danger waves-effect waves-light"><i class="fa fa-trash"></i></button>
+                    <button type="button" onclick="editForm(`'. route('kontak.update', $kontak->id) .'`)" class="btn btn-soft-warning waves-effect waves-light mr-2"><i class="fa fa-edit"></i></button>
+                    <button type="button" onclick="deleteData(`'. route('kontak.destroy', $kontak->id) .'`)" class="btn btn-soft-danger waves-effect waves-light"><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })

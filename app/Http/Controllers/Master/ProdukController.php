@@ -115,8 +115,19 @@ class ProdukController extends Controller
     public function update(Request $request, $id)
     {
         $kategori = Produk::find($id);
-        $kategori->nama = $request->nama;
-        $kategori->keterangan = $request->keterangan;
+        $produk->kode = $request->kode;
+        $produk->nama = $request->nama;
+        $produk->kategori_produk_id = $request->kategori_produk_id;
+        $produk->uom_id = $request->uom_id;
+        $produk->stok = $request->stok;
+        $produk->stok_min = $request->stok_min;
+        $produk->panjang = $request->panjang;
+        $produk->lebar = $request->lebar;
+        $produk->harga_beli = $request->harga_beli;
+        $produk->harga_jual = $request->harga_jual;
+        $produk->supplier_id = $request->supplier_id;
+        $produk->is_active = $request->is_active;
+        $produk->path_foto = $request->path_foto;
         $kategori->update();
 
         return response()->json('Data berhasil disimpan', 200);
@@ -132,6 +143,16 @@ class ProdukController extends Controller
     {
         $produk = Produk::find($id);
         $produk->delete();
+
+        return response(null, 204);
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request->id as $id) {
+            $produk = Produk::find($id);
+            $produk->delete();
+        }
 
         return response(null, 204);
     }

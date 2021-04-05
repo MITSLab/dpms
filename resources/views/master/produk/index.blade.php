@@ -121,12 +121,21 @@
             $('#modal-form form').attr('action', url);
             $('#modal-form [name=_method]').val('put');
             $('#modal-form [name=nama]').focus();
-            $('#modal-form [name=keterangan]').focus();
+ 
     
             $.get(url)
                 .done((response) => {
                     $('#modal-form [name=nama]').val(response.nama);
-                    $('#modal-form [name=keterangan]').val(response.keterangan);
+                    $('#modal-form [name=uom_id]').val(response.uom_id);
+                    $('#modal-form [name=stok]').val(response.stok);
+                    $('#modal-form [name=stok_min]').val(response.stok_min);
+                    $('#modal-form [name=panjang]').val(response.panjang);
+                    $('#modal-form [name=lebar]').val(response.lebar);
+                    $('#modal-form [name=harga_beli]').val(response.harga_beli);
+                    $('#modal-form [name=harga_jual]').val(response.harga_jual);
+                    $('#modal-form [name=supplier_id]').val(response.supplier_id);
+                    $('#modal-form [name=kategori_produk_id]').val(response.kategori_produk_id);
+                    $('#modal-form [name=is_active]').prop("checked", response.is_active);
                 })
                 .fail((errors) => {
                     toastr.error('Tidak dapat menampilkan data');

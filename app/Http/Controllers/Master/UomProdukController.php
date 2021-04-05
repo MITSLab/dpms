@@ -37,8 +37,8 @@ class UomProdukController extends Controller
             ->addColumn('aksi', function ($uom) {
                 return '
                 <div class="btn-group">
-                    <button onclick="editForm(`'. route('produk.uom.update', $uom->id) .'`)" class="btn btn-soft-warning waves-effect waves-light mr-2"><i class="fa fa-edit"></i></button>
-                    <button onclick="deleteData(`'. route('produk.uom.destroy', $uom->id) .'`)" class="btn btn-soft-danger waves-effect waves-light"><i class="fa fa-trash"></i></button>
+                    <button type="button" onclick="editForm(`'. route('produk.uom.update', $uom->id) .'`)" class="btn btn-soft-warning waves-effect waves-light mr-2"><i class="fa fa-edit"></i></button>
+                    <button otype="button" nclick="deleteData(`'. route('produk.uom.destroy', $uom->id) .'`)" class="btn btn-soft-danger waves-effect waves-light"><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })
