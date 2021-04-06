@@ -57,13 +57,19 @@
                 processing: true,
                 autoWidth: false,
                 ajax: {
-                    url: '{{ route('produk.kategori.create') }}',
+                    url: '{{ route('kontak.create') }}',
                 },
                 columns: [
                     {data: 'select_all', searchable: false, sortable: false},
                     {data: 'DT_RowIndex', searchable: false, sortable: false},
+                    {data: 'kode'},
                     {data: 'nama'},
-                    {data: 'keterangan'},
+                    {data: 'telepon'},
+                    {data: 'kurs'},
+                    {data: 'jenis_kontak_id'},
+                    {data: 'jenis'},
+                    {data: 'klasifikasi'},
+                    {data: 'npwp'},
                     {data: 'aksi', searchable: false, sortable: false},
                 ]
             });
@@ -90,7 +96,7 @@
     
         function addForm(url) {
             $('#modal-form').modal('show');
-            $('#modal-form .modal-title').text('Tambah Kategori');
+            $('#modal-form .modal-title').text('Tambah Kontak');
     
             $('#modal-form form')[0].reset();
             $('#modal-form form').attr('action', url);
@@ -101,7 +107,7 @@
     
         function editForm(url) {
             $('#modal-form').modal('show');
-            $('#modal-form .modal-title').text('Edit Kategori');
+            $('#modal-form .modal-title').text('Edit Kontak');
     
             $('#modal-form form')[0].reset();
             $('#modal-form form').attr('action', url);
@@ -112,7 +118,15 @@
             $.get(url)
                 .done((response) => {
                     $('#modal-form [name=nama]').val(response.nama);
-                    $('#modal-form [name=keterangan]').val(response.keterangan);
+                    $('#modal-form [name=kode]').val(response.kode);
+                    $('#modal-form [name=telepon]').val(response.telepon);
+                    $('#modal-form [name=kurs]').val(response.kurs);
+                    $('#modal-form [name=jenis_kontak_id]').val(response.jenis_kontak_id);
+                    $('#modal-form [name=jenis]').val(response.jenis);
+                    $('#modal-form [name=klasifikasi]').val(response.klasifikasi);
+                    $('#modal-form [name=npwp]').val(response.npwp);
+
+                    
                 })
                 .fail((errors) => {
                     toastr.error('Tidak dapat menampilkan data');

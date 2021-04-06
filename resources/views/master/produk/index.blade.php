@@ -28,6 +28,7 @@
                             <input type="checkbox" name="select_all" id="select_all">
                         </th>
                         <th width="5%">No</th>
+                        <th>Kode</th>
                         <th>Nama</th>
                         <th>Kategori</th>
                         <th>Satuan</th>
@@ -66,6 +67,7 @@
                 columns: [
                     {data: 'select_all', searchable: false, sortable: false},
                     {data: 'DT_RowIndex', searchable: false, sortable: false},
+                    {data: 'kode'},
                     {data: 'nama'},
                     {data: 'kategoriproduk.nama'},
                     {data: 'uom.nama'},
@@ -125,6 +127,7 @@
     
             $.get(url)
                 .done((response) => {
+                    $('#modal-form [name=kode]').val(response.kode);
                     $('#modal-form [name=nama]').val(response.nama);
                     $('#modal-form [name=uom_id]').val(response.uom_id);
                     $('#modal-form [name=stok]').val(response.stok);

@@ -25,7 +25,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        $member = Member::all();
+        $member = Member::with('tipemember')->get();
         return Datatables::of($member)
             ->addIndexColumn()
             ->addColumn('aksi', function ($member) {
@@ -49,14 +49,11 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $member = new Member();
+        $member->kode = $request->kode;
         $member->nama = $request->nama;
+        $member->alamat = $request->alamat;
         $member->telepon = $request->telepon;
-        $member->kurs = $request->kurs;
-        $member->tipe = $request->tipe;
-        $member->jenis = $request->jenis;
-        $member->klasifikasi = $request->klasifikasi;
-        $member->npwp = $request->npwp;
-        $member->keterangan = $request->keterangan;
+        $member->tipe_member_id = $request->tipe_member_id;
         $member->save();
 
         return response()->json('Data berhasil berhasil disimpan', 200);
@@ -96,14 +93,11 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         $kontak = Kontak::find($id);
-        $kontak->nama = $request->nama;
-        $kontak->telepon = $request->telepon;
-        $kontak->kurs = $request->kurs;
-        $kontak->tipe = $request->tipe;
-        $kontak->jenis = $request->jenis;
-        $kontak->klasifikasi = $request->klasifikasi;
-        $kontak->npwp = $request->npwp;
-        $kontak->keterangan = $request->keterangan;
+        $member->kode = $request->kode;
+        $member->nama = $request->nama;
+        $member->alamat = $request->alamat;
+        $member->telepon = $request->telepon;
+        $member->tipe_member_id = $request->tipe_member_id;
         $kontak->update();
 
         return response()->json('Data berhasil disimpan', 200);

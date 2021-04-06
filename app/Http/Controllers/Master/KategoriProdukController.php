@@ -29,11 +29,6 @@ class KategoriProdukController extends Controller
         $kategori = KategoriProduk::all();
         return Datatables::of($kategori)
             ->addIndexColumn()
-            ->addColumn('select_all', function ($kategori) {
-                return '
-                    <input type="checkbox" name="id[]" value="'. $kategori->id .'">
-                ';
-            })
             ->addColumn('aksi', function ($kategori) {
                 return '
                 <div class="btn-group">
@@ -113,16 +108,6 @@ class KategoriProdukController extends Controller
     {
         $kategori = KategoriProduk::find($id);
         $kategori->delete();
-
-        return response(null, 204);
-    }
-
-    public function deleteSelected(Request $request)
-    {
-        foreach ($request->id as $id) {
-            $kategori = KategoriProduk::find($id);
-            $kategori->delete();
-        }
 
         return response(null, 204);
     }

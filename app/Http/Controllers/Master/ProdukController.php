@@ -73,7 +73,7 @@ class ProdukController extends Controller
         $produk->harga_beli = $request->harga_beli;
         $produk->harga_jual = $request->harga_jual;
         $produk->supplier_id = $request->supplier_id;
-        $produk->is_active = $request->is_active;
+        $produk->is_active = $request->is_active ?? 0;
         $produk->path_foto = $request->path_foto;
     
         $produk->save();
@@ -114,7 +114,7 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $kategori = Produk::find($id);
+        $produk = Produk::find($id);
         $produk->kode = $request->kode;
         $produk->nama = $request->nama;
         $produk->kategori_produk_id = $request->kategori_produk_id;
@@ -126,9 +126,9 @@ class ProdukController extends Controller
         $produk->harga_beli = $request->harga_beli;
         $produk->harga_jual = $request->harga_jual;
         $produk->supplier_id = $request->supplier_id;
-        $produk->is_active = $request->is_active;
+        $produk->is_active = $request->is_active ?? 0;
         $produk->path_foto = $request->path_foto;
-        $kategori->update();
+        $produk->update();
 
         return response()->json('Data berhasil disimpan', 200);
     }

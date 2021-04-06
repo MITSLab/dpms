@@ -20,20 +20,14 @@
             <x-slot name="title">
                 Kategori Produk
             </x-slot>
-            <form action="" method="post" class="form-kategori">
-                @csrf
                 <table class="table dt-responsive nowrap">
                     <thead>
-                        <th width="5%">
-                            <input type="checkbox" name="select_all" id="select_all">
-                        </th>
                         <th width="5%">No</th>
                         <th>Kategori</th>
                         <th>Keterangan</th>
                         <th width="10%" class="text-center"><i class="fa fa-cog"></i></th>
                     </thead>
                 </table>
-            </form>
         </x-card>
     </div>
     </div>
@@ -42,43 +36,7 @@
 @includeIf('master.kategori_produk.form')
 @endsection
 
-@push('css')
-    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
-    <link href="{{asset('templates/horizontal/assets')}}/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
-@endpush
-
 @push('js')
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-    <!-- Buttons examples -->
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/buttons.bootstrap4.min.js"></script>
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/jszip.min.js"></script>
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/pdfmake.min.js"></script>
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/vfs_fonts.js"></script>
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/buttons.html5.min.js"></script>
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/buttons.print.min.js"></script>
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/buttons.colVis.min.js"></script>
-    <!-- Responsive examples -->
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/dataTables.responsive.min.js"></script>
-    <script src="{{asset('templates/horizontal/assets')}}/plugins/datatables/responsive.bootstrap4.min.js"></script>
-    <script src="{{asset('templates/horizontal/assets')}}/pages/jquery.datatable.init.js"></script>
-
-    <script src="{{ asset('js/validator.min.js') }}"></script>
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
-    
-    <script>
-        $('.toast').toast({
-            delay:2000,
-            // Other options
-        });
-        toastr.options = {
-        "closeButton": true,
-        "progressBar": true,
-        "positionClass": "toast-bottom-right",
-
-        }
-    </script>
     
 
     <script>
@@ -92,7 +50,6 @@
                     url: '{{ route('produk.kategori.create') }}',
                 },
                 columns: [
-                    {data: 'select_all', searchable: false, sortable: false},
                     {data: 'DT_RowIndex', searchable: false, sortable: false},
                     {data: 'nama'},
                     {data: 'keterangan'},

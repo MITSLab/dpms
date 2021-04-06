@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kontak;
+use DataTables;
 
 class KontakController extends Controller
 {
@@ -28,6 +29,11 @@ class KontakController extends Controller
         $kontak = Kontak::all();
         return Datatables::of($kontak)
             ->addIndexColumn()
+            ->addColumn('select_all', function ($kontak) {
+                return '
+                    <input type="checkbox" name="id[]" value="'. $kontak->id .'">
+                ';
+            })
             ->addColumn('aksi', function ($kontak) {
                 return '
                 <div class="btn-group">
@@ -36,7 +42,7 @@ class KontakController extends Controller
                 </div>
                 ';
             })
-            ->rawColumns(['aksi'])
+            ->rawColumns(['select_all','aksi'])
             ->make(true);
     }
 
@@ -49,14 +55,14 @@ class KontakController extends Controller
     public function store(Request $request)
     {
         $kontak = new Kontak();
+        $kontak->kode = $request->kode;
         $kontak->nama = $request->nama;
         $kontak->telepon = $request->telepon;
         $kontak->kurs = $request->kurs;
-        $kontak->tipe = $request->tipe;
+        $kontak->jenis_kontak_id = $request->jenis_kontak_id;
         $kontak->jenis = $request->jenis;
         $kontak->klasifikasi = $request->klasifikasi;
         $kontak->npwp = $request->npwp;
-        $kontak->keterangan = $request->keterangan;
         $kontak->save();
 
         return response()->json('Data berhasil berhasil disimpan', 200);
@@ -96,14 +102,14 @@ class KontakController extends Controller
     public function update(Request $request, $id)
     {
         $kontak = Kontak::find($id);
+        $kontak->kode = $request->kode;
         $kontak->nama = $request->nama;
         $kontak->telepon = $request->telepon;
         $kontak->kurs = $request->kurs;
-        $kontak->tipe = $request->tipe;
+        $kontak->jenis_kontak_id = $request->jenis_kontak_id;
         $kontak->jenis = $request->jenis;
         $kontak->klasifikasi = $request->klasifikasi;
         $kontak->npwp = $request->npwp;
-        $kontak->keterangan = $request->keterangan;
         $kontak->update();
 
         return response()->json('Data berhasil disimpan', 200);
