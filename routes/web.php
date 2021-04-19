@@ -21,8 +21,7 @@ Route::get('/home', function () {
     return view('home');
 });
 
-
-Route::name('pesanan.')->namespace('Transaksi')->prefix('pesanan')->group(function(){
+Route::name('pesanan.')->namespace('Transaksi')->prefix('pesanan')->group(function () {
     Route::get('/', 'PemesananController@index')->name('index');
     Route::get('/baru', 'PemesananController@create')->name('create');
 });
@@ -31,7 +30,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/route', function() {
+Route::get('/route', function () {
     Artisan::call('route:cache');
     return "Cache is cleared";
 });

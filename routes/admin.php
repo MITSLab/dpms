@@ -9,10 +9,9 @@ Route::group(['middleware' => ['web', 'role:admin']], function () {
     });
 });
 
-Route::namespace('Master')->group(function(){
-
+Route::namespace('Master')->group(function () {
     Route::resource('/produk', 'ProdukController');
-    Route::name('produk.')->prefix('produk')->group(function(){
+    Route::name('produk.')->prefix('produk')->group(function () {
         Route::post('/delete-selected', 'ProdukController@deleteSelected')->name('delete_selected');
 
         Route::resource('/kategori', 'KategoriProdukController');
@@ -23,7 +22,7 @@ Route::namespace('Master')->group(function(){
     });
 
     Route::resource('/kontak', 'KontakController');
-    Route::name('kontak.')->prefix('kontak')->group(function(){
+    Route::name('kontak.')->prefix('kontak')->group(function () {
         Route::resource('/detail', 'KontakDetailController');
         Route::post('/delete-selected', 'KontakController@deleteSelected')->name('delete_selected');
 
@@ -33,10 +32,9 @@ Route::namespace('Master')->group(function(){
         Route::resource('/supplier', 'SupplierController');
         Route::resource('/kurir', 'KurirController');
     });
-
 });
 
-Route::name('admin.')->prefix('admin')->group(function(){
+Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('/users', 'UserController');
     Route::post('/users/delete-selected', 'UserController@deleteSelected')->name('users.delete_selected');
 
